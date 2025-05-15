@@ -1,13 +1,38 @@
 import cats.effect.{IO, IOApp}
-import org.typelevel.log4cats.Logger
-import org.typelevel.log4cats.slf4j.Slf4jLogger
-
+import com.comcast.ip4s.{host, port}
+import config.*
+import org.http4s.HttpRoutes
+import org.http4s.Method.GET
+import org.http4s.dsl.io.*
+import org.http4s.ember.client.EmberClientBuilder
+import org.http4s.ember.server.*
+import org.http4s.implicits.*
+import org.typelevel.log4cats.slf4j.Slf4jFactory
+import org.typelevel.log4cats.{Logger, LoggerFactory}
+import pureconfig.ConfigSource
 
 object Main extends IOApp.Simple {
 
-  given logger: Logger[IO] = Slf4jLogger.getLogger[IO]
+  given loggerFactory: LoggerFactory[IO] = Slf4jFactory.create[IO]
+  given logger: Logger[IO] = loggerFactory.getLogger
 
-  val run: IO[Unit] = IO.println("hello world")
+  def run: IO[Unit] = (for {
+    _ <- IO.delay(ConfigSource.default.loadOrThrow[AppConfig]).toResource
+    _ <- client
+    _ <- server
+  } yield ()).useForever
 
+  private def routes = HttpRoutes
+    .of[IO] { case GET -> Root => Ok("Server started") }
+    .orNotFound
+
+  private val client = EmberClientBuilder.default[IO].build
+
+  private val server = EmberServerBuilder
+    .default[IO]
+    .withHost(host"localhost")
+    .withPort(port"8080")
+    .withHttpApp(routes)
+    .build
 
 }

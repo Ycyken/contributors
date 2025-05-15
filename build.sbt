@@ -7,9 +7,8 @@ lazy val root = project
   .in(file("."))
   .settings(
     name := "contributors",
-
     scalaVersion := scala3Version,
-
+    Compile / run / fork := true,
     libraryDependencies ++= Seq(
       "org.http4s" %% "http4s-ember-server" % Http4sVersion,
       "org.http4s" %% "http4s-ember-client" % Http4sVersion,
