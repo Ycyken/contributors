@@ -19,4 +19,7 @@ lazy val root = project
       "com.github.pureconfig" %% "pureconfig-core" % "0.17.9",
       "ch.qos.logback" % "logback-classic" % "1.5.18" % Runtime,
     ),
+    semanticdbEnabled := true,
+    semanticdbVersion := scalafixSemanticdb.revision,
+    scalacOptions ++= Seq("-Wunused:imports", "-Wunused:all"),
   )

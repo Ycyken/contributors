@@ -1,12 +1,12 @@
 import cats.effect.IO
 import config.Token
-import org.http4s.{AuthScheme, Credentials, Headers, MediaType, Method, Request, Uri}
 import org.http4s.client.Client
 import org.http4s.headers.{Accept, Authorization}
+import org.http4s.{AuthScheme, Credentials, Headers, MediaType, Method, Request, Uri}
+import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.syntax.LoggerInterpolator
 import play.api.libs.json.{Json, Reads, Writes}
-import org.typelevel.log4cats.Logger
-import syntax.*
+import syntax._
 
 object syntax {
   extension (self: String) def into[A](using r: Reads[A]): A = Json.parse(self).as[A]
