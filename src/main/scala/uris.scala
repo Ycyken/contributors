@@ -3,7 +3,7 @@ import org.http4s.Uri
 
 object uris {
 
-  def uri(url: String): IO[Uri] = IO.fromEither(Uri.fromString(url))
+  def uriBuilder(url: String): IO[Uri] = IO.fromEither(Uri.fromString(url))
 
   def repos(org: String): String = s"https://api.github.com/orgs/$org/repos"
 
