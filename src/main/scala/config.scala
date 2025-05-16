@@ -8,7 +8,10 @@ object config {
 
   object Token {
     def apply(str: String): Token = str
-    def toString(token: Token): String = token
+  }
+
+  extension (x: Token) {
+    def value: String = x
   }
 
   final case class ServerConfig(host: Host, port: Port) derives ConfigReader
