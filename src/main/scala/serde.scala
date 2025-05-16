@@ -1,8 +1,8 @@
-import cats.instances.either._
-import cats.syntax.all._
+import cats.instances.either.*
+import cats.syntax.all.*
 import domain.{Commit, Repos}
 import zio.json.ast.{Json, JsonCursor}
-import zio.json.{DeriveJsonDecoder, JsonDecoder}
+import zio.json.{DeriveJsonEncoder, JsonDecoder, JsonEncoder}
 
 object serde {
   private val arrayCursor = JsonCursor.isArray
@@ -10,20 +10,22 @@ object serde {
   given decodeCommit: JsonDecoder[Commit] = {
     val commitCursor = JsonCursor.field("commit") >>> JsonCursor.isObject
     val authorCursor = JsonCursor.field("author") >>> JsonCursor.isObject
-    val dateCursor = JsonCursor.field("date") >>> JsonCursor.isString
-    val messageCursor = JsonCursor.field("message") >>> JsonCursor.isString
-    val loginCursor = JsonCursor.field("login") >>> JsonCursor.isString
+    val dateCursor = commitCursor >>> authorCursor >>> JsonCursor.field("date") >>> JsonCursor.isString
+    val messageCursor = commitCursor >>> JsonCursor.field("message") >>> JsonCursor.isString
+    val loginCursor = authorCursor >>> JsonCursor.field("login") >>> JsonCursor.isString
     JsonDecoder[Json].mapOrFail { c =>
       for {
-        commit <- c.get(commitCursor)
-        date <- commit.get(authorCursor).flatMap(_.get(dateCursor))
-        message <- commit.get(messageCursor)
+        date <- c.get(dateCursor)
+        message <- c.get(messageCursor)
         login <- c.get(loginCursor)
       } yield Commit(login.value, message.value, date.value)
     }
   }
 
-  given decodeCommits: JsonDecoder[List[Commit]] = DeriveJsonDecoder.gen[List[Commit]]
+  given decodeCommits: JsonDecoder[List[Commit]] = JsonDecoder.list[Commit]
+
+  given encodeCommit: JsonEncoder[Commit] = DeriveJsonEncoder.gen[Commit]
+  given encodeCommits: JsonEncoder[List[Commit]] = JsonEncoder.list[Commit]
 
   given decodeRepos: JsonDecoder[Repos] = {
     val nameCursor = JsonCursor.field("name") >>> JsonCursor.isString
