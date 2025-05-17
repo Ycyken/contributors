@@ -14,8 +14,7 @@ object client {
   def fetch[A](client: Client[IO], uri: Uri, default: => A)(using token: Token)(using decoder: JsonDecoder[A]): IO[A] =
     client
       .expect[String](request(uri))
-      .map(_.fromJson[A])
-      .flatMap(_ => error"return default value: $default for $uri in fetch" as default)
+      .flatMap(_.fromJson[A].fold(_ => error"return default value: $default for $uri in fetch" as default, x => IO(x)))
 
   private def request(uri: Uri)(using token: Token): Request[IO] = Request[IO](
     method = Method.GET,
