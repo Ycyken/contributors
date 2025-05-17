@@ -1,14 +1,14 @@
 import cats.effect.{IO, IOApp}
 import client.fetch
-import config.*
+import config._
 import domain.Commit
 import org.http4s.HttpRoutes
 import org.http4s.Method.GET
 import org.http4s.client.Client
-import org.http4s.dsl.io.*
+import org.http4s.dsl.io._
 import org.http4s.ember.client.EmberClientBuilder
-import org.http4s.ember.server.*
-import org.http4s.implicits.*
+import org.http4s.ember.server._
+import org.http4s.implicits._
 import org.typelevel.log4cats.slf4j.Slf4jFactory
 import org.typelevel.log4cats.{Logger, LoggerFactory}
 import pureconfig.ConfigSource
