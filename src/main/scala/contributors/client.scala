@@ -65,7 +65,9 @@ object client {
           _ <- info"fetched $owner/$repo ${anotherCommits.length} commits on page $page"
         } yield anotherCommits,
       )
-    } yield firstPageCommits ++ otherCommits
+      allCommits = firstPageCommits ++ otherCommits
+      _ <- info"fetched ${allCommits.length} commits from repo: $repo"
+    } yield allCommits
   }
 
   def fetchOrgCommits(client: Client[IO], org: String)(using token: Token): IO[List[Commit]] = {
@@ -76,11 +78,10 @@ object client {
       repos <- fetchBody[List[RepoName]](client, reposUri, List())
       commits <- repos.parUnorderedFlatTraverse(repo =>
         for {
-          _ <- info"start $org/$repo commits fetching"
           commits <- fetchRepoCommits(client, org, repo.value)
-          _ <- info"fetched ${commits.length} commits from repo $org/$repo"
         } yield commits,
       )
+      _ <- info"fetched ${commits.length} commits at in organisation: $org"
     } yield commits
 
   }
