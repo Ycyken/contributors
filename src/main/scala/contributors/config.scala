@@ -1,3 +1,5 @@
+package contributors
+
 import com.comcast.ip4s.{Host, Port}
 import pureconfig.ConfigReader
 import pureconfig.error.CannotConvert

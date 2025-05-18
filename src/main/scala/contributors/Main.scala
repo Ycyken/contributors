@@ -1,14 +1,16 @@
+package contributors
+
 import cats.effect.{IO, IOApp}
-import client.fetchRepoCommits
-import config._
-import domain.Commit
+import contributors.client.fetchRepoCommits
+import contributors.config.*
+import contributors.domain.Commit
 import org.http4s.HttpRoutes
 import org.http4s.Method.GET
 import org.http4s.client.Client
-import org.http4s.dsl.io._
+import org.http4s.dsl.io.*
 import org.http4s.ember.client.EmberClientBuilder
-import org.http4s.ember.server._
-import org.http4s.implicits._
+import org.http4s.ember.server.*
+import org.http4s.implicits.*
 import org.typelevel.log4cats.slf4j.Slf4jFactory
 import org.typelevel.log4cats.syntax.LoggerInterpolator
 import org.typelevel.log4cats.{Logger, LoggerFactory}

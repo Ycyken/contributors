@@ -1,14 +1,16 @@
+package contributors
+
 import cats.effect.IO
-import cats.implicits._
-import cats.syntax.all._
-import config._
-import domain.Commit
-import org.http4s._
+import cats.implicits.*
+import cats.syntax.all.*
+import contributors.config.*
+import contributors.domain.Commit
+import org.http4s.*
 import org.http4s.client.Client
 import org.http4s.headers.{Accept, Authorization, Link}
 import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.syntax.LoggerInterpolator
-import zio.json._
+import zio.json.*
 
 object client {
 

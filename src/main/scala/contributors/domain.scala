@@ -1,3 +1,5 @@
+package contributors
+
 object domain {
 
   final case class Commit(author: String, message: String, time: String)

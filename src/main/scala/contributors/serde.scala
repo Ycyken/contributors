@@ -1,6 +1,8 @@
-import cats.instances.either._
-import cats.syntax.all._
-import domain.{Commit, Repos}
+package contributors
+
+import cats.instances.either.*
+import cats.syntax.all.*
+import contributors.domain.{Commit, Repos}
 import zio.json.ast.{Json, JsonCursor}
 import zio.json.{DeriveJsonEncoder, JsonDecoder, JsonEncoder}
 

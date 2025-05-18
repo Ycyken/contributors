@@ -1,3 +1,5 @@
+package contributors
+
 import cats.effect.IO
 import org.http4s.Uri
 
