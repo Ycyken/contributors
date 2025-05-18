@@ -5,8 +5,6 @@ import zio.json.ast.{Json, JsonCursor}
 import zio.json.{DeriveJsonEncoder, JsonDecoder, JsonEncoder}
 
 object serde {
-  JsonCursor.isArray
-
   given decodeCommit: JsonDecoder[Commit] = {
     val commitCursor = JsonCursor.field("commit") >>> JsonCursor.isObject
     val authorCursor = JsonCursor.field("author") >>> JsonCursor.isObject

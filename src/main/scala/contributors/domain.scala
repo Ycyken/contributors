@@ -4,7 +4,7 @@ object domain {
 
   final case class Commit(author: String, message: String, time: String)
 
-  final case class Contributor(login: String, commitCount: Long, activityTime: (String, String))
+  final case class Contributor(name: String, commitCount: Int, activityTime: Array[Int], avgCommitMsg: Int)
 
   opaque type RepoName = String
 
