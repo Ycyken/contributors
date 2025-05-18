@@ -2,7 +2,7 @@ package contributors
 
 import contributors.domain.{Commit, Contributor, RepoName}
 import zio.json.ast.{Json, JsonCursor}
-import zio.json.{DeriveJsonDecoder, DeriveJsonEncoder, JsonDecoder, JsonEncoder}
+import zio.json.{DeriveJsonEncoder, JsonDecoder, JsonEncoder}
 
 object serde {
   given decodeCommit: JsonDecoder[Commit] = {

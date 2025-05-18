@@ -2,16 +2,16 @@ package contributors
 
 import cats.effect.{IO, IOApp}
 import contributors.client.{fetchOrgCommits, fetchRepoCommits}
-import contributors.config.*
+import contributors.config._
 import contributors.domain.{Commit, Contributor}
 import contributors.service.processCommits
 import org.http4s.HttpRoutes
 import org.http4s.Method.GET
 import org.http4s.client.Client
-import org.http4s.dsl.io.*
+import org.http4s.dsl.io._
 import org.http4s.ember.client.EmberClientBuilder
-import org.http4s.ember.server.*
-import org.http4s.implicits.*
+import org.http4s.ember.server._
+import org.http4s.implicits._
 import org.typelevel.log4cats.slf4j.Slf4jFactory
 import org.typelevel.log4cats.syntax.LoggerInterpolator
 import org.typelevel.log4cats.{Logger, LoggerFactory}
@@ -32,7 +32,7 @@ object Main extends IOApp.Simple {
 
   private def routes(client: Client[IO], token: Token) = {
     given tk: Token = token
-    
+
     given contributorsEncoder: JsonEncoder[List[Contributor]] = serde.encodeContributors
 
     HttpRoutes
