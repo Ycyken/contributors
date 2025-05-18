@@ -43,6 +43,7 @@ object Main extends IOApp.Simple {
             commits: List[Commit] <- fetchRepoCommits(client, owner, repo)
               .onError(e => error"can't fetch commits from repo $repo: $e")
 
+            _ <- info"start commits processing"
             contributors <- IO(processCommits(commits))
             serializedContributors = contributors.toJson
           } yield serializedContributors)
@@ -54,6 +55,7 @@ object Main extends IOApp.Simple {
             commits: List[Commit] <- fetchOrgCommits(client, org)
               .onError(e => error"can't fetch commits from org $org: $e")
 
+            _ <- info"start commits processing"
             contributors <- IO(processCommits(commits))
             serializedContributors = contributors.toJson
           } yield serializedContributors)
