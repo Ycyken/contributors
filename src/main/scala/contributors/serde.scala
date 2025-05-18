@@ -1,13 +1,11 @@
 package contributors
 
-import cats.instances.either.*
-import cats.syntax.all.*
-import contributors.domain.{Commit, Repos}
+import contributors.domain.{Commit, RepoName}
 import zio.json.ast.{Json, JsonCursor}
 import zio.json.{DeriveJsonEncoder, JsonDecoder, JsonEncoder}
 
 object serde {
-  private val arrayCursor = JsonCursor.isArray
+  JsonCursor.isArray
 
   given decodeCommit: JsonDecoder[Commit] = {
     val commitCursor = JsonCursor.field("commit") >>> JsonCursor.isObject
@@ -30,13 +28,11 @@ object serde {
   given encodeCommit: JsonEncoder[Commit] = DeriveJsonEncoder.gen[Commit]
   given encodeCommits: JsonEncoder[List[Commit]] = JsonEncoder.list[Commit]
 
-  given decodeRepos: JsonDecoder[Repos] = {
+  given decodeRepoName: JsonDecoder[RepoName] = {
     val nameCursor = JsonCursor.field("name") >>> JsonCursor.isString
     JsonDecoder[Json].mapOrFail { c =>
-      for {
-        arr <- c.get(arrayCursor)
-        names <- arr.elements.toList.traverse(_.get(nameCursor).map(_.value))
-      } yield Repos(names)
+      c.get(nameCursor).map(j => RepoName(j.value))
     }
   }
+  given decodeRepoNames: JsonDecoder[List[RepoName]] = JsonDecoder.list[RepoName]
 }

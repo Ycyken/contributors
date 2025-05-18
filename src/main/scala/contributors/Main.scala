@@ -1,16 +1,16 @@
 package contributors
 
 import cats.effect.{IO, IOApp}
-import contributors.client.fetchRepoCommits
-import contributors.config.*
+import contributors.client.{fetchOrgCommits, fetchRepoCommits}
+import contributors.config._
 import contributors.domain.Commit
 import org.http4s.HttpRoutes
 import org.http4s.Method.GET
 import org.http4s.client.Client
-import org.http4s.dsl.io.*
+import org.http4s.dsl.io._
 import org.http4s.ember.client.EmberClientBuilder
-import org.http4s.ember.server.*
-import org.http4s.implicits.*
+import org.http4s.ember.server._
+import org.http4s.implicits._
 import org.typelevel.log4cats.slf4j.Slf4jFactory
 import org.typelevel.log4cats.syntax.LoggerInterpolator
 import org.typelevel.log4cats.{Logger, LoggerFactory}
@@ -40,12 +40,20 @@ object Main extends IOApp.Simple {
           info"get repo request on owner: $owner, repo: $repo"
           val res: IO[String] = for {
             commitList: List[Commit] <- fetchRepoCommits(client, owner, repo)
-              .onError(e => error"can't fetch repo commits: $e")
+              .onError(e => error"can't fetch commits from repo $repo: $e")
             _ <- info"return ${commitList.length} commits in response at '/repo/$owner/$repo'"
             serializedCommits = commitList.toJson
           } yield serializedCommits
           Ok(res)
-        case GET -> Root / "org" / _ => Ok("organisation repositories not implemented")
+        case GET -> Root / "org" / org =>
+          info"get repo request on org: $org"
+          val res: IO[String] = for {
+            commitList: List[Commit] <- fetchOrgCommits(client, org)
+              .onError(e => error"can't fetch commits from org $org: $e")
+            _ <- info"return ${commitList.length} commits in response at '/org/$org'"
+            serializedCommits = commitList.toJson
+          } yield serializedCommits
+          Ok(res)
       }
       .orNotFound
   }

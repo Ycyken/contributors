@@ -1,16 +1,16 @@
 package contributors
 
 import cats.effect.IO
-import cats.implicits.*
-import cats.syntax.all.*
-import contributors.config.*
-import contributors.domain.Commit
-import org.http4s.*
+import cats.implicits._
+import cats.syntax.all._
+import contributors.config._
+import contributors.domain.{Commit, RepoName}
+import org.http4s._
 import org.http4s.client.Client
 import org.http4s.headers.{Accept, Authorization, Link}
 import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.syntax.LoggerInterpolator
-import zio.json.*
+import zio.json._
 
 object client {
 
@@ -61,11 +61,28 @@ object client {
         for {
           _ <- info"start $owner/$repo commits fetch on page $page"
           pageUri <- uris.commits(owner, repo, page)
-          anotherCommits <- fetchBody(client, pageUri, List.empty)
+          anotherCommits <- fetchBody[List[Commit]](client, pageUri, List.empty)
           _ <- info"fetched $owner/$repo ${anotherCommits.length} commits on page $page"
         } yield anotherCommits,
       )
     } yield firstPageCommits ++ otherCommits
+  }
+
+  def fetchOrgCommits(client: Client[IO], org: String)(using token: Token): IO[List[Commit]] = {
+    given reposDecoder: JsonDecoder[List[RepoName]] = serde.decodeRepoNames
+
+    for {
+      reposUri <- uris.repos(org)
+      repos <- fetchBody[List[RepoName]](client, reposUri, List())
+      commits <- repos.parUnorderedFlatTraverse(repo =>
+        for {
+          _ <- info"start $org/$repo commits fetching"
+          commits <- fetchRepoCommits(client, org, repo.value)
+          _ <- info"fetched ${commits.length} commits from repo $org/$repo"
+        } yield commits,
+      )
+    } yield commits
+
   }
 
   private def extractLastPageNumber(link: Link): IO[Int] =

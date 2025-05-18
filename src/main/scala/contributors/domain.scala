@@ -6,12 +6,12 @@ object domain {
 
   final case class Contributor(login: String, commitCount: Long, activityTime: (String, String))
 
-  opaque type Repos = List[String]
+  opaque type RepoName = String
 
-  object Repos {
-    def apply(repos: List[String]): Repos = repos
+  object RepoName {
+    def apply(name: String): RepoName = name
   }
 
-  extension (x: Repos) def value: List[String] = x
+  extension (x: RepoName) def value: String = x
 
 }
