@@ -3,7 +3,7 @@ package contributors
 import cats.effect.{IO, IOApp}
 import contributors.client.{fetchOrgCommits, fetchRepoCommits}
 import contributors.config.*
-import contributors.domain.Commit
+import contributors.domain.{Commit, Contributor}
 import contributors.service.processCommits
 import org.http4s.HttpRoutes
 import org.http4s.Method.GET
@@ -32,29 +32,31 @@ object Main extends IOApp.Simple {
 
   private def routes(client: Client[IO], token: Token) = {
     given tk: Token = token
-
-    given commitsEncoder: JsonEncoder[List[Commit]] = serde.encodeCommits
+    
+    given contributorsEncoder: JsonEncoder[List[Contributor]] = serde.encodeContributors
 
     HttpRoutes
       .of[IO] {
         case GET -> Root / "repo" / owner / repo =>
           info"get repo request on owner: $owner, repo: $repo"
           Ok(for {
-            commitList: List[Commit] <- fetchRepoCommits(client, owner, repo)
+            commits: List[Commit] <- fetchRepoCommits(client, owner, repo)
               .onError(e => error"can't fetch commits from repo $repo: $e")
 
-            serializedCommits = commitList.toJson
-          } yield serializedCommits)
+            contributors <- IO(processCommits(commits))
+            serializedContributors = contributors.toJson
+          } yield serializedContributors)
 
         case GET -> Root / "org" / org =>
           info"get repo request on org: $org"
 
           Ok(for {
-            commitList: List[Commit] <- fetchOrgCommits(client, org)
+            commits: List[Commit] <- fetchOrgCommits(client, org)
               .onError(e => error"can't fetch commits from org $org: $e")
 
-            serializedCommits = commitList.toJson
-          } yield serializedCommits)
+            contributors <- IO(processCommits(commits))
+            serializedContributors = contributors.toJson
+          } yield serializedContributors)
       }
       .orNotFound
   }

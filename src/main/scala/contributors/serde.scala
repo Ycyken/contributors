@@ -1,8 +1,8 @@
 package contributors
 
-import contributors.domain.{Commit, RepoName}
+import contributors.domain.{Commit, Contributor, RepoName}
 import zio.json.ast.{Json, JsonCursor}
-import zio.json.{DeriveJsonEncoder, JsonDecoder, JsonEncoder}
+import zio.json.{DeriveJsonDecoder, DeriveJsonEncoder, JsonDecoder, JsonEncoder}
 
 object serde {
   given decodeCommit: JsonDecoder[Commit] = {
@@ -20,7 +20,6 @@ object serde {
       } yield Commit(login.value, message.value, date.value)
     }
   }
-
   given decodeCommits: JsonDecoder[List[Commit]] = JsonDecoder.list[Commit]
 
   given encodeCommit: JsonEncoder[Commit] = DeriveJsonEncoder.gen[Commit]
@@ -33,4 +32,9 @@ object serde {
     }
   }
   given decodeRepoNames: JsonDecoder[List[RepoName]] = JsonDecoder.list[RepoName]
+
+  given encodeContributor: JsonEncoder[Contributor] = DeriveJsonEncoder.gen[Contributor].contramap { c =>
+    c.copy(activityTime = c.activityTime.toList.toArray)
+  }
+  given encodeContributors: JsonEncoder[List[Contributor]] = JsonEncoder.list[Contributor]
 }
