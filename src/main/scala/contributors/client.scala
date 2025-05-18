@@ -24,6 +24,7 @@ object client {
         .run(request(uri))
         .use(r =>
           for {
+            _ <- info"fetched uri $uri with status code ${r.status}"
             body <- r.as[String]
           } yield SimpleResponse(r.status, r.headers, body),
         ),
@@ -50,7 +51,7 @@ object client {
         case Right(d) => IO(d)
         case Left(s) => IO.raiseError(RuntimeException(s"can't decode $s"))
       }
-      _ <- info"fetched $owner/$repo commits first page"
+      _ <- info"fetched $owner/$repo ${firstPageCommits.length} commits on page 1"
       lastPage <-
         firstResponse.headers.get[Link].map(extractLastPageNumber).fold(IO(1))(identity)
       _ <- info"get $owner/$repo commits last page: $lastPage"

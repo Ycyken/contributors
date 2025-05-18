@@ -15,11 +15,12 @@ object serde {
     val dateCursor = commitCursor >>> authorCursor >>> JsonCursor.field("date") >>> JsonCursor.isString
     val messageCursor = commitCursor >>> JsonCursor.field("message") >>> JsonCursor.isString
     val loginCursor = authorCursor >>> JsonCursor.field("login") >>> JsonCursor.isString
+    val commitAuthorName = commitCursor >>> authorCursor >>> JsonCursor.field("name") >>> JsonCursor.isString
     JsonDecoder[Json].mapOrFail { c =>
       for {
         date <- c.get(dateCursor)
         message <- c.get(messageCursor)
-        login <- c.get(loginCursor)
+        login <- c.get(loginCursor).orElse(c.get(commitAuthorName))
       } yield Commit(login.value, message.value, date.value)
     }
   }
