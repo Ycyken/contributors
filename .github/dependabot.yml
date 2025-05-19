@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "sbt"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      scala-dependencies:
+        patterns:
+          - "*" # All dependabot updates are grouped
