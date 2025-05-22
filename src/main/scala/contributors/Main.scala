@@ -38,27 +38,26 @@ object Main extends IOApp.Simple {
     HttpRoutes
       .of[IO] {
         case GET -> Root / "repo" / owner / repo =>
-          info"get repo request on owner: $owner, repo: $repo"
-          Ok(for {
+          for {
+            _ <- info"get repo request on owner: $owner, repo: $repo"
             commits: List[Commit] <- fetchRepoCommits(client, owner, repo)
               .onError(e => error"can't fetch commits from repo $repo: $e")
 
             _ <- info"start commits processing"
             contributors <- IO(processCommits(commits))
-            serializedContributors = contributors.toJson
-          } yield serializedContributors)
+            serializedContributors <- Ok(contributors.toJson)
+          } yield serializedContributors
 
         case GET -> Root / "org" / org =>
-          info"get repo request on org: $org"
-
-          Ok(for {
+          for {
+            _ <- info"get repo request on org: $org"
             commits: List[Commit] <- fetchOrgCommits(client, org)
               .onError(e => error"can't fetch commits from org $org: $e")
 
             _ <- info"start commits processing"
             contributors <- IO(processCommits(commits))
-            serializedContributors = contributors.toJson
-          } yield serializedContributors)
+            serializedContributors <- Ok(contributors.toJson)
+          } yield serializedContributors
       }
       .orNotFound
   }
