@@ -1,0 +1,330 @@
+[
+  {
+    "sha": "a760aaeefee86d18bf136fc4de4c1d95cc600b29",
+    "node_id": "C_kwDOEEvqU9oAKGE3NjBhYWVlZmVlODZkMThiZjEzNmZjNGRlNGMxZDk1Y2M2MDBiMjk",
+    "commit": {
+      "author": {
+        "name": "Daniel A. White",
+        "email": "daniel@whitefamily.in",
+        "date": "2025-05-20T19:33:43Z"
+      },
+      "committer": {
+        "name": "Christopher Berner",
+        "email": "me@cberner.com",
+        "date": "2025-05-21T00:00:32Z"
+      },
+      "message": "Fix macos flags to u64",
+      "tree": {
+        "sha": "9b4ee0404faa7030284183902d0f5f9dc6edf07f",
+        "url": "https://api.github.com/repos/cberner/fuser/git/trees/9b4ee0404faa7030284183902d0f5f9dc6edf07f"
+      },
+      "url": "https://api.github.com/repos/cberner/fuser/git/commits/a760aaeefee86d18bf136fc4de4c1d95cc600b29",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/cberner/fuser/commits/a760aaeefee86d18bf136fc4de4c1d95cc600b29",
+    "html_url": "https://github.com/cberner/fuser/commit/a760aaeefee86d18bf136fc4de4c1d95cc600b29",
+    "comments_url": "https://api.github.com/repos/cberner/fuser/commits/a760aaeefee86d18bf136fc4de4c1d95cc600b29/comments",
+    "author": {
+      "login": "daniel-white",
+      "id": 735269,
+      "node_id": "MDQ6VXNlcjczNTI2OQ==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/735269?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/daniel-white",
+      "html_url": "https://github.com/daniel-white",
+      "followers_url": "https://api.github.com/users/daniel-white/followers",
+      "following_url": "https://api.github.com/users/daniel-white/following{/other_user}",
+      "gists_url": "https://api.github.com/users/daniel-white/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/daniel-white/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/daniel-white/subscriptions",
+      "organizations_url": "https://api.github.com/users/daniel-white/orgs",
+      "repos_url": "https://api.github.com/users/daniel-white/repos",
+      "events_url": "https://api.github.com/users/daniel-white/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/daniel-white/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "cberner",
+      "id": 842688,
+      "node_id": "MDQ6VXNlcjg0MjY4OA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/842688?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/cberner",
+      "html_url": "https://github.com/cberner",
+      "followers_url": "https://api.github.com/users/cberner/followers",
+      "following_url": "https://api.github.com/users/cberner/following{/other_user}",
+      "gists_url": "https://api.github.com/users/cberner/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/cberner/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/cberner/subscriptions",
+      "organizations_url": "https://api.github.com/users/cberner/orgs",
+      "repos_url": "https://api.github.com/users/cberner/repos",
+      "events_url": "https://api.github.com/users/cberner/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/cberner/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "5964dc4a1c519b68c7a1a756f0d4a4927b1c7c93",
+        "url": "https://api.github.com/repos/cberner/fuser/commits/5964dc4a1c519b68c7a1a756f0d4a4927b1c7c93",
+        "html_url": "https://github.com/cberner/fuser/commit/5964dc4a1c519b68c7a1a756f0d4a4927b1c7c93"
+      }
+    ]
+  },
+  {
+    "sha": "5964dc4a1c519b68c7a1a756f0d4a4927b1c7c93",
+    "node_id": "C_kwDOEEvqU9oAKDU5NjRkYzRhMWM1MTliNjhjN2ExYTc1NmYwZDRhNDkyN2IxYzdjOTM",
+    "commit": {
+      "author": {
+        "name": "Christopher Berner",
+        "email": "me@cberner.com",
+        "date": "2025-05-20T20:25:17Z"
+      },
+      "committer": {
+        "name": "Christopher Berner",
+        "email": "me@cberner.com",
+        "date": "2025-05-20T22:05:26Z"
+      },
+      "message": "Make CI more strict",
+      "tree": {
+        "sha": "9b0e6168d97cf280bd7273c269a09c7d056359f0",
+        "url": "https://api.github.com/repos/cberner/fuser/git/trees/9b0e6168d97cf280bd7273c269a09c7d056359f0"
+      },
+      "url": "https://api.github.com/repos/cberner/fuser/git/commits/5964dc4a1c519b68c7a1a756f0d4a4927b1c7c93",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/cberner/fuser/commits/5964dc4a1c519b68c7a1a756f0d4a4927b1c7c93",
+    "html_url": "https://github.com/cberner/fuser/commit/5964dc4a1c519b68c7a1a756f0d4a4927b1c7c93",
+    "comments_url": "https://api.github.com/repos/cberner/fuser/commits/5964dc4a1c519b68c7a1a756f0d4a4927b1c7c93/comments",
+    "author": {
+      "login": "cberner",
+      "id": 842688,
+      "node_id": "MDQ6VXNlcjg0MjY4OA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/842688?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/cberner",
+      "html_url": "https://github.com/cberner",
+      "followers_url": "https://api.github.com/users/cberner/followers",
+      "following_url": "https://api.github.com/users/cberner/following{/other_user}",
+      "gists_url": "https://api.github.com/users/cberner/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/cberner/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/cberner/subscriptions",
+      "organizations_url": "https://api.github.com/users/cberner/orgs",
+      "repos_url": "https://api.github.com/users/cberner/repos",
+      "events_url": "https://api.github.com/users/cberner/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/cberner/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "cberner",
+      "id": 842688,
+      "node_id": "MDQ6VXNlcjg0MjY4OA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/842688?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/cberner",
+      "html_url": "https://github.com/cberner",
+      "followers_url": "https://api.github.com/users/cberner/followers",
+      "following_url": "https://api.github.com/users/cberner/following{/other_user}",
+      "gists_url": "https://api.github.com/users/cberner/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/cberner/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/cberner/subscriptions",
+      "organizations_url": "https://api.github.com/users/cberner/orgs",
+      "repos_url": "https://api.github.com/users/cberner/repos",
+      "events_url": "https://api.github.com/users/cberner/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/cberner/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "233d62aaad7765e29a141c4b7f8a4379e21af571",
+        "url": "https://api.github.com/repos/cberner/fuser/commits/233d62aaad7765e29a141c4b7f8a4379e21af571",
+        "html_url": "https://github.com/cberner/fuser/commit/233d62aaad7765e29a141c4b7f8a4379e21af571"
+      }
+    ]
+  },
+  {
+    "sha": "4b9e23a68f810319b4a5de77de45254ad9fba6e6",
+    "node_id": "C_kwDOEEvqU9oAKDRiOWUyM2E2OGY4MTAzMTliNGE1ZGU3N2RlNDUyNTRhZDlmYmE2ZTY",
+    "commit": {
+      "author": {
+        "name": "Allison Karlitskaya",
+        "email": "allison.karlitskaya@redhat.com",
+        "date": "2025-05-06T15:31:30Z"
+      },
+      "committer": {
+        "name": "Christopher Berner",
+        "email": "me@cberner.com",
+        "date": "2025-05-06T22:01:17Z"
+      },
+      "message": "tests: add a passthrough test\n\n...and run it from CI via `make test_passthrough`.\n\nWe need to upgrade to ubuntu-24.04 in order to do this because we need a\nkernel with passthrough support.",
+      "tree": {
+        "sha": "4aca0c89cd495abd9c9c7c04ac825310070a579e",
+        "url": "https://api.github.com/repos/cberner/fuser/git/trees/4aca0c89cd495abd9c9c7c04ac825310070a579e"
+      },
+      "url": "https://api.github.com/repos/cberner/fuser/git/commits/4b9e23a68f810319b4a5de77de45254ad9fba6e6",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/cberner/fuser/commits/4b9e23a68f810319b4a5de77de45254ad9fba6e6",
+    "html_url": "https://github.com/cberner/fuser/commit/4b9e23a68f810319b4a5de77de45254ad9fba6e6",
+    "comments_url": "https://api.github.com/repos/cberner/fuser/commits/4b9e23a68f810319b4a5de77de45254ad9fba6e6/comments",
+    "author": {
+      "login": "allisonkarlitskaya",
+      "id": 36541154,
+      "node_id": "MDQ6VXNlcjM2NTQxMTU0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36541154?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/allisonkarlitskaya",
+      "html_url": "https://github.com/allisonkarlitskaya",
+      "followers_url": "https://api.github.com/users/allisonkarlitskaya/followers",
+      "following_url": "https://api.github.com/users/allisonkarlitskaya/following{/other_user}",
+      "gists_url": "https://api.github.com/users/allisonkarlitskaya/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/allisonkarlitskaya/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/allisonkarlitskaya/subscriptions",
+      "organizations_url": "https://api.github.com/users/allisonkarlitskaya/orgs",
+      "repos_url": "https://api.github.com/users/allisonkarlitskaya/repos",
+      "events_url": "https://api.github.com/users/allisonkarlitskaya/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/allisonkarlitskaya/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "cberner",
+      "id": 842688,
+      "node_id": "MDQ6VXNlcjg0MjY4OA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/842688?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/cberner",
+      "html_url": "https://github.com/cberner",
+      "followers_url": "https://api.github.com/users/cberner/followers",
+      "following_url": "https://api.github.com/users/cberner/following{/other_user}",
+      "gists_url": "https://api.github.com/users/cberner/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/cberner/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/cberner/subscriptions",
+      "organizations_url": "https://api.github.com/users/cberner/orgs",
+      "repos_url": "https://api.github.com/users/cberner/repos",
+      "events_url": "https://api.github.com/users/cberner/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/cberner/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "3037c7d71f3ae058405a4c273a3bc4229e0f56b7",
+        "url": "https://api.github.com/repos/cberner/fuser/commits/3037c7d71f3ae058405a4c273a3bc4229e0f56b7",
+        "html_url": "https://github.com/cberner/fuser/commit/3037c7d71f3ae058405a4c273a3bc4229e0f56b7"
+      }
+    ]
+  },
+  {
+    "sha": "3037c7d71f3ae058405a4c273a3bc4229e0f56b7",
+    "node_id": "C_kwDOEEvqU9oAKDMwMzdjN2Q3MWYzYWUwNTg0MDVhNGMyNzNhM2JjNDIyOWUwZjU2Yjc",
+    "commit": {
+      "author": {
+        "name": "Allison Karlitskaya",
+        "email": "allison.karlitskaya@redhat.com",
+        "date": "2025-05-01T19:02:25Z"
+      },
+      "committer": {
+        "name": "Christopher Berner",
+        "email": "me@cberner.com",
+        "date": "2025-05-06T22:01:17Z"
+      },
+      "message": "examples: add an example for passthrough fds\n\nThis is copied from the same template as the other examples.  It\nincludes an example of how a filesystem might choose to cache and reuse\nBackingIds.",
+      "tree": {
+        "sha": "ddb81555262545e70766c5377814a0cfdb834ceb",
+        "url": "https://api.github.com/repos/cberner/fuser/git/trees/ddb81555262545e70766c5377814a0cfdb834ceb"
+      },
+      "url": "https://api.github.com/repos/cberner/fuser/git/commits/3037c7d71f3ae058405a4c273a3bc4229e0f56b7",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/cberner/fuser/commits/3037c7d71f3ae058405a4c273a3bc4229e0f56b7",
+    "html_url": "https://github.com/cberner/fuser/commit/3037c7d71f3ae058405a4c273a3bc4229e0f56b7",
+    "comments_url": "https://api.github.com/repos/cberner/fuser/commits/3037c7d71f3ae058405a4c273a3bc4229e0f56b7/comments",
+    "author": {
+      "login": "allisonkarlitskaya",
+      "id": 36541154,
+      "node_id": "MDQ6VXNlcjM2NTQxMTU0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36541154?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/allisonkarlitskaya",
+      "html_url": "https://github.com/allisonkarlitskaya",
+      "followers_url": "https://api.github.com/users/allisonkarlitskaya/followers",
+      "following_url": "https://api.github.com/users/allisonkarlitskaya/following{/other_user}",
+      "gists_url": "https://api.github.com/users/allisonkarlitskaya/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/allisonkarlitskaya/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/allisonkarlitskaya/subscriptions",
+      "organizations_url": "https://api.github.com/users/allisonkarlitskaya/orgs",
+      "repos_url": "https://api.github.com/users/allisonkarlitskaya/repos",
+      "events_url": "https://api.github.com/users/allisonkarlitskaya/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/allisonkarlitskaya/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "cberner",
+      "id": 842688,
+      "node_id": "MDQ6VXNlcjg0MjY4OA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/842688?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/cberner",
+      "html_url": "https://github.com/cberner",
+      "followers_url": "https://api.github.com/users/cberner/followers",
+      "following_url": "https://api.github.com/users/cberner/following{/other_user}",
+      "gists_url": "https://api.github.com/users/cberner/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/cberner/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/cberner/subscriptions",
+      "organizations_url": "https://api.github.com/users/cberner/orgs",
+      "repos_url": "https://api.github.com/users/cberner/repos",
+      "events_url": "https://api.github.com/users/cberner/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/cberner/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "ae3e6c083ef702bd9a902e7128a272ef550cc230",
+        "url": "https://api.github.com/repos/cberner/fuser/commits/ae3e6c083ef702bd9a902e7128a272ef550cc230",
+        "html_url": "https://github.com/cberner/fuser/commit/ae3e6c083ef702bd9a902e7128a272ef550cc230"
+      }
+    ]
+  }
+]

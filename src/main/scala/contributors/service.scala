@@ -8,7 +8,7 @@ import scala.collection.mutable
 
 object service {
 
-  private def hourFromIsoTime(t: String): Int = {
+  private[contributors] def hourFromIsoTime(t: String): Int = {
     val zdt = ZonedDateTime.parse(t, DateTimeFormatter.ISO_DATE_TIME)
     zdt.getHour
   }
